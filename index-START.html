@@ -50,8 +50,14 @@
           y = y + e.target.offsetTop;
         }
 
+        // (x / width) gives you the % of the total width (origin is NW corner)
+        // That % times your walk = I'm 50% of the way across, so that's 50% of my total walk (in base case 50px)
+        // subtracting half the total walk means 50% mark is zero pixels
+        // so anything less than 50% width is -pixels...
         const xWalk = Math.round((x / width) * walk - walk / 2);
         const yWalk = Math.round((y / height) * walk - walk / 2);
+
+        console.log(x / width);
 
         heroText.style.textShadow = `${xWalk}px ${yWalk}px 0 red`;
       }
